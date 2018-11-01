@@ -91,10 +91,9 @@ int main() {
     print_graph();
 
     /*
-    TODO ceny ciest, floyd-warshall
-    TODO ?riesenie pre jednu triedu?
+    TODO riesenie pre jednu triedu
     TODO prechadzanie vsetkych permutacii
     TODO penalty pre kazdu permutaciu
-    TODO preskakovanie nevyhodnych permutacii
+    TODO zarezavanie nevyhodnych permutacii
     */
 }
