@@ -1,0 +1,55 @@
+{
+  "NumberOfClasses": 2,
+  "Classes": [
+    {
+      "ClassName": "4.SA",
+      "Days": [
+        {
+          "NumberOfPeriods": 9,
+          "Classrooms": [ 1, 2, 3, 4, 2, 2, 2, 4, 7 ]
+        },
+        {
+          "NumberOfPeriods": 7,
+          "Classrooms": [ 1, 3, 5, 4, 5, 2, 2 ]
+        },
+        {
+          "NumberOfPeriods": 6,
+          "Classrooms": [ 2, 1, 3, 6, 2, 4 ]
+        },
+        {
+          "NumberOfPeriods": 7,
+          "Classrooms": [ 4, 2, 4, 4, 2, 2, 1 ]
+        },
+        {
+          "NumberOfPeriods": 5,
+          "Classrooms": [ 3, 7, 3, 4, 2 ]
+        }
+      ]
+    },
+    {
+      "ClassName": "3.F",
+      "Days": [
+        {
+          "NumberOfPeriods": 5,
+          "Classrooms": [ 3, 7, 3, 1, 2 ]
+        },
+        {
+          "NumberOfPeriods": 7,
+          "Classrooms": [ 4, 6, 4, 4, 2, 2, 1 ]
+        },
+        {
+          "NumberOfPeriods": 9,
+          "Classrooms": [ 1, 2, 3, 6, 2, 2, 2, 5, 7 ]
+        },
+        {
+          "NumberOfPeriods": 7,
+          "Classrooms": [ 2, 1, 3, 6, 2, 4, 6 ]
+        },
+        {
+          "NumberOfPeriods": 6,
+          "Classrooms": [ 3, 5, 1, 2, 6, 5 ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "NumberOfNodes": 8,
+  "NumberOfEdges": 9,
+  "Edges": [
+    {
+      "from": 1,
+      "to": 2,
+      "cost": 2
+    },
+    {
+      "from": 2,
+      "to": 3,
+      "cost": 2
+    },
+    {
+      "from": 2,
+      "to": 4,
+      "cost": 5
+    },
+    {
+      "from": 3,
+      "to": 5,
+      "cost": 4
+    },
+    {
+      "from": 3,
+      "to": 6,
+      "cost": 1
+    },
+    {
+      "from": 5,
+      "to": 7,
+      "cost": 7
+    },
+    {
+      "from": 6,
+      "to": 7,
+      "cost": 2
+    },
+    {
+      "from": 4,
+      "to": 7,
+      "cost": 1
+    },
+    {
+      "from": 7,
+      "to": 8,
+      "cost": 4
+    }
+  ]
+}

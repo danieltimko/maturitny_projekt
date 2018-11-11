@@ -15,41 +15,49 @@ fstream file;
 vector<vector<int>> dist;
 vector<Schedule> schedules;
 
-
 void read_graph(){
-    file.open("../graph.txt");
+    file.open("../graph.json");
     int nodes, edges;
-    file >> nodes >> edges;
+    string ignore;
+    file >> ignore >> ignore >> nodes >> ignore >> ignore >> edges >> ignore >> ignore >> ignore;
     dist.resize(nodes+1);
     for (int i = 0; i < nodes+1; ++i)
         dist[i].resize(nodes+1, inf);
     for (int i = 0; i < edges; ++i) {
         int from, to, cost;
-        file >> from >> to >> cost;
+        file >> ignore >> ignore >> from >> ignore >> ignore >> to >> ignore >> ignore >> cost >> ignore;
         dist[from][to] = cost;
         dist[to][from] = cost;
     }
     file.close();
+    cout << "here" << endl;
 }
 
 void read_schedules(){
-    file.open("../schedules.txt");
+    file.open("../schedules.json");
     int n; //pocet tried
-    file >> n;
+    string ignore;
+    file >> ignore >> ignore >> n >> ignore >> ignore >> ignore;
     schedules.resize(n);
     for (int i = 0; i < n; ++i) {
-        file >> schedules[i].class_name; //nazov triedy
-        for (int day = 0; day < 5; ++day) {
+        string name;
+        file >> ignore >> ignore >> name >> ignore >> ignore;
+        schedules[i].class_name = name.substr(1, name.size()-3); //nazov triedy
+        for (int j = 0; j < 5; ++j) {
             int periods; //pocet hodin v dany den
-            file >> periods;
-            for (int j = 0; j < periods; ++j) {
-                int classroom; //ucebna v ktorej je hodina
+            file >> ignore >> ignore >> periods >> ignore >> ignore >> ignore;
+            for (int k = 0; k < periods; ++k) {
+                int classroom; // ucebna v ktorej je hodina
                 file >> classroom;
-                schedules[i].schedule[day].push_back(classroom);
+                schedules[i].schedule[j].push_back(classroom);
+                //cout << schedules[i].schedule[j].size() << endl;
+                if(k < periods-1)
+                    file >> ignore;
             }
+            file >> ignore >> ignore;
         }
+        file >> ignore >> ignore;
     }
-    file.close();
 }
 
 void print_graph(){
