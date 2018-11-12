@@ -28,7 +28,6 @@ int main() {
     Output::print_graph(dist);
 
     /*
-    TODO classy
     TODO riesenie pre jednu triedu
     TODO prechadzanie vsetkych permutacii
     TODO penalty pre kazdu permutaciu
