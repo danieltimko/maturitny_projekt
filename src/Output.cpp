@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
-#include "Schedule.h"
-#include "Output.h"
+#include "../include/Schedule.h"
+#include "../include/Output.h"
 #define inf 0x3f3f3f3f
 
 using namespace std;

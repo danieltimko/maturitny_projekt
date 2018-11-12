@@ -3,5 +3,5 @@ project(maturitny_projekt)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(SOURCE_FILES Algorithm.cpp Input.cpp Output.cpp Output.h Schedule.h Output.h Input.h)
+set(SOURCE_FILES src/Algorithm.cpp src/Input.cpp src/Output.cpp include/Output.h include/Schedule.h include/Output.h include/Input.h)
 add_executable(maturitny_projekt ${SOURCE_FILES})

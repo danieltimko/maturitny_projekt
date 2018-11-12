@@ -1,8 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include "Schedule.h"
-#include "Input.h"
+#include "../include/Schedule.h"
+#include "../include/Input.h"
 #define inf 0x3f3f3f3f
 
 using namespace std;
