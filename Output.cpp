@@ -6,7 +6,7 @@
 
 using namespace std;
 
-void Output::print_graph(vector<vector<int>> dist){
+void Output::print(vector<vector<int>> dist){
     for (int i = 1; i < dist.size(); ++i)
         for (int j = 1; j < dist.size(); ++j) {
             if (dist[i][j] == inf)
@@ -17,7 +17,7 @@ void Output::print_graph(vector<vector<int>> dist){
     cout << endl;
 }
 
-void Output::print_schedules(vector<Schedule> schedules){
+void Output::print(vector<Schedule> schedules){
     for(Schedule i : schedules){
         cout << i.class_name << endl;
         for (int j = 0; j < 5; ++j)

@@ -22,10 +22,10 @@ void make_floyd(){
 int main() {
     dist = Input::read_graph();
     schedules = Input::read_schedules();
-    Output::print_graph(dist);
-    Output::print_schedules(schedules);
+    Output::print(dist);
+    Output::print(schedules);
     make_floyd();
-    Output::print_graph(dist);
+    Output::print(dist);
 
     /*
     TODO riesenie pre jednu triedu
