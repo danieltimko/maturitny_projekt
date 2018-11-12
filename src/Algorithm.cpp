@@ -8,8 +8,8 @@
 
 using namespace std;
 
-static vector<vector<int>> dist;
-static vector<Schedule> schedules;
+vector<vector<int>> dist;
+vector<Schedule> schedules;
 
 void make_floyd(){
     for (int k = 1; k < dist.size(); ++k)
