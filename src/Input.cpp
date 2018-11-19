@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <set>
 #include "../include/Schedule.h"
 #include "../include/Input.h"
 #define inf 0x3f3f3f3f
@@ -18,6 +19,8 @@ vector<vector<int>> Input::read_graph(){
     dist.resize(nodes+1);
     for (int i = 0; i < nodes+1; ++i)
         dist[i].resize(nodes+1, inf);
+    for (int i = 1; i < nodes+1; ++i)
+        dist[i][i] = 0;
     for (int i = 0; i < edges; ++i) {
         int from, to, cost;
         file >> ignore >> ignore >> from >> ignore >> ignore >> to >> ignore >> ignore >> cost >> ignore;
@@ -46,7 +49,7 @@ vector<Schedule> Input::read_schedules(){
             for (int k = 0; k < periods; ++k) {
                 int classroom; // ucebna v ktorej je hodina
                 file >> classroom;
-                schedules[i].schedule[j].push_back(classroom);
+                schedules[i].schedule.push_back(classroom);
                 if(k < periods-1)
                     file >> ignore;
             }
@@ -55,4 +58,12 @@ vector<Schedule> Input::read_schedules(){
         file >> ignore >> ignore;
     }
     return schedules;
+}
+
+set<int> Input::get_classrooms(vector<Schedule> schedules){
+    set<int> classrooms;
+    for(Schedule i : schedules)
+        for (int j = 0; j < i.schedule.size(); ++j)
+            classrooms.insert(i.schedule[j]);
+    return classrooms;
 }

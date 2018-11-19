@@ -20,9 +20,8 @@ void Output::print(vector<vector<int>> dist){
 void Output::print(vector<Schedule> schedules){
     for(Schedule i : schedules){
         cout << i.class_name << endl;
-        for (int j = 0; j < 5; ++j)
-            for (int k = 0; k < i.schedule[j].size(); ++k)
-                cout << i.schedule[j][k] << " \n"[k==i.schedule[j].size()-1];
+            for (int j = 0; j < i.schedule.size(); ++j)
+                cout << i.schedule[j] << " \n"[j==i.schedule.size()-1];
         cout << endl;
     }
     cout << endl;

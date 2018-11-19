@@ -6,5 +6,5 @@ using namespace std;
 class Schedule{
 public:
     string class_name;
-    vector<int> schedule[5];
+    vector<int> schedule;
 };
