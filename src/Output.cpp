@@ -31,9 +31,9 @@ void Output::print(vector<Schedule> schedules){
 
 void Output::print(map<string,int> permutation, int best_dist){
     for (auto i : permutation) {
-        cout << "trieda " << i.first << ": ";
+        cout << "kmenova trieda pre triedu " << i.first << ": ";
         if(i.second < 0)
-            cout << "bez kmenovej ucebne";
+            cout << "bez kmenovej triedy";
         else cout << i.second;
         cout << endl;
     }

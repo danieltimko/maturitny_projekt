@@ -43,7 +43,8 @@ int one_class(string class_name){
 }
 
 void add_null_classrooms(){
-    // ak ma trieda null_classroom, znamena to ze sa jej neusla kmenova ucebna
+    // ak je viac tried ako kmenovych ucebni, doplni ucebne o null_classrooms
+    // ak je triede pridelena null_classroom, znamena to ze sa jej neusla kmenova ucebna
     // vsetky null_classroom maju cislo mensie ako 0
     for(int i = schedules.size(); i > classrooms.size(); ++i) {
         cout << "null_classroom added\n";
@@ -64,7 +65,7 @@ int evaluate(){
 
 void all_permutations(int index = 0){
     // prechadza vsetky mozne priradenia ucebni
-    if(index == schedules.size()){
+    if(index == schedules.size()){ // kompletna permutacia
         int current_dist = evaluate();
         if(current_dist < best_dist){
             best_dist = current_dist;
@@ -92,6 +93,7 @@ int main() {
     Output::print(dist);
     //cout << one_class("4.SA") << endl;
     //cout << one_class("3.F") << endl;
+    add_null_classrooms();
     all_permutations();
     Output::print(best_permutation, best_dist);
 
