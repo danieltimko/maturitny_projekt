@@ -1,7 +1,9 @@
 #include <iostream>
 #include <vector>
+#include <map>
 #include "../include/Schedule.h"
 #include "../include/Output.h"
+
 #define inf 0x3f3f3f3f
 
 using namespace std;
@@ -25,4 +27,15 @@ void Output::print(vector<Schedule> schedules){
         cout << endl;
     }
     cout << endl;
+}
+
+void Output::print(map<string,int> permutation, int best_dist){
+    for (auto i : permutation) {
+        cout << "trieda " << i.first << ": ";
+        if(i.second < 0)
+            cout << "bez kmenovej ucebne";
+        else cout << i.second;
+        cout << endl;
+    }
+    cout << "Celkova prejdena vzdialenost: " << best_dist << endl << endl;
 }

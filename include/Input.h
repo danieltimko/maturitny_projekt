@@ -3,7 +3,7 @@ using namespace std;
 
 class Input{
 public:
-    static vector<vector<int>> read_graph();
-    static vector<Schedule> read_schedules();
-    static set<int> get_classrooms(vector<Schedule> schedules);
+
+    static void read_graph(vector<vector<int>>&, vector<Classroom>&);
+    static void read_schedules(vector<Schedule>&);
 };

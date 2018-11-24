@@ -1,17 +1,26 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include <set>
 #include "../include/Schedule.h"
+#include "../include/Classroom.h"
 #include "../include/Input.h"
+
+
 #define inf 0x3f3f3f3f
 
 using namespace std;
 
-vector<vector<int>> Input::read_graph(){
+
+bool contains(vector<Classroom> v, int key){
+    for (int i = 0; i < v.size(); ++i)
+        if(v[i].number == key)
+            return true;
+    return false;
+}
+
+void Input::read_graph(vector<vector<int>> &dist, vector<Classroom> &classrooms){
     ifstream file;
     file.open("graph.json");
-    vector<vector<int>> dist;
     file.open("../graph.json");
     int nodes, edges;
     string ignore;
@@ -26,14 +35,20 @@ vector<vector<int>> Input::read_graph(){
         file >> ignore >> ignore >> from >> ignore >> ignore >> to >> ignore >> ignore >> cost >> ignore;
         dist[from][to] = cost;
         dist[to][from] = cost;
+        if(!contains(classrooms, from)) {
+            classrooms.push_back({});
+            classrooms[classrooms.size()-1].number = from;
+        }
+        if(!contains(classrooms, to)){
+            classrooms.push_back({});
+            classrooms[classrooms.size()-1].number = to;
+        }
     }
     file.close();
-    return dist;
 }
 
-vector<Schedule> Input::read_schedules(){
+void Input::read_schedules(vector<Schedule> &schedules){
     ifstream file;
-    vector<Schedule> schedules;
     file.open("../schedules.json");
     int n; //pocet tried
     string ignore;
@@ -57,13 +72,4 @@ vector<Schedule> Input::read_schedules(){
         }
         file >> ignore >> ignore;
     }
-    return schedules;
-}
-
-set<int> Input::get_classrooms(vector<Schedule> schedules){
-    set<int> classrooms;
-    for(Schedule i : schedules)
-        for (int j = 0; j < i.schedule.size(); ++j)
-            classrooms.insert(i.schedule[j]);
-    return classrooms;
 }
