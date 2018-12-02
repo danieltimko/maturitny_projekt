@@ -18,9 +18,8 @@ bool contains(vector<Classroom> v, int key){
     return false;
 }
 
-void Input::read_graph(vector<vector<int>> &dist, vector<Classroom> &classrooms){
+void Input::read_graph(vector<vector<int>> &dist){
     ifstream file;
-    file.open("graph.json");
     file.open("../graph.json");
     int nodes, edges;
     string ignore;
@@ -35,19 +34,11 @@ void Input::read_graph(vector<vector<int>> &dist, vector<Classroom> &classrooms)
         file >> ignore >> ignore >> from >> ignore >> ignore >> to >> ignore >> ignore >> cost >> ignore;
         dist[from][to] = cost;
         dist[to][from] = cost;
-        if(!contains(classrooms, from)) {
-            classrooms.push_back({});
-            classrooms[classrooms.size()-1].number = from;
-        }
-        if(!contains(classrooms, to)){
-            classrooms.push_back({});
-            classrooms[classrooms.size()-1].number = to;
-        }
     }
     file.close();
 }
 
-void Input::read_schedules(vector<Schedule> &schedules){
+void Input::read_schedules(vector<Schedule> &schedules, vector<Classroom> &kmenove){
     ifstream file;
     file.open("../schedules.json");
     int n; //pocet tried
@@ -72,4 +63,13 @@ void Input::read_schedules(vector<Schedule> &schedules){
         }
         file >> ignore >> ignore;
     }
+    int m; //pocet kmenovych ucebni
+    file >> ignore >> ignore >> m >> ignore >> ignore >> ignore;
+    kmenove.resize(m);
+    for (int i = 0; i < m; ++i) {
+        file >> kmenove[i].number;
+        if(i < m-1)
+            file >> ignore;
+    }
+    file.close();
 }
