@@ -91,8 +91,8 @@ int main() {
     Output::print(schedules);
     make_floyd();
     Output::print(dist);
-    //cout << one_class("4.SA") << endl;
-    //cout << one_class("3.F") << endl;
+    cout << one_class("4.SA") << endl;
+    cout << one_class("3.F") << endl;
     add_null_classrooms();
     all_permutations();
     Output::print(best_permutation, best_dist);
