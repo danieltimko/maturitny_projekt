@@ -57,28 +57,34 @@ void add_null_classrooms(){
 int evaluate(){
     // vypocita celkovu prejdenu vzdialenost pre dane rozlozenie
     int cost = 0;
-    for (int i = 0; i < schedules.size(); ++i)
+    for (int i = 0; i < schedules.size(); ++i) {
+        if(!permutation[schedules[i].class_name]) // ak triede este nie je priradena ucebna
+            continue;
         for (int j = 0; j < schedules[i].schedule.size(); ++j)
             cost += dist[permutation[schedules[i].class_name]][schedules[i].schedule[j]];
+    }
     return cost;
 }
 
 void all_permutations(int index = 0){
     // prechadza vsetky mozne priradenia ucebni
-    if(index == schedules.size()){ // kompletna permutacia
-        int current_dist = evaluate();
+    int current_dist = evaluate();
+    if(index == schedules.size()){ // kompletna permutacia, vsetky triedy su pridelene
         if(current_dist < best_dist){
             best_dist = current_dist;
             best_permutation = permutation;
         }
         return;
     }
+    if(current_dist >= best_dist)
+        return;
     string class_name = schedules[index].class_name;
     for (int i = 0; i < kmenove.size(); ++i)
         if(!kmenove[i].assigned) {
             permutation[class_name] = kmenove[i].number;
             kmenove[i].assigned = true;
             all_permutations(index+1);
+            permutation[class_name] = 0;
             kmenove[i].assigned = false;
         }
 
@@ -93,6 +99,7 @@ int main() {
     Output::print(dist);
     cout << one_class("4.SA") << endl;
     cout << one_class("3.F") << endl;
+    cout << one_class("4.B") << endl;
     add_null_classrooms();
     all_permutations();
     Output::print(best_permutation, best_dist);

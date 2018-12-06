@@ -1,5 +1,5 @@
 {
-  "PocetTried": 2,
+  "PocetTried": 3,
   "Triedy": [
     {
       "NazovTriedy": "4.SA",
@@ -48,6 +48,31 @@
         {
           "PocetHodin": 6,
           "Ucebne": [ 5, 5, 1, 2, 6, 5 ]
+        }
+      ]
+    },
+    {
+      "NazovTriedy": "4.B",
+      "Days": [
+        {
+          "PocetHodin": 7,
+          "Ucebne": [ 5, 5, 6, 2, 5, 5, 6 ]
+        },
+        {
+          "PocetHodin": 8,
+          "Ucebne": [ 2, 2, 1, 1, 2, 2, 2, 2 ]
+        },
+        {
+          "PocetHodin": 6,
+          "Ucebne": [ 1, 1, 1, 2, 2, 2 ]
+        },
+        {
+          "PocetHodin": 7,
+          "Ucebne": [ 6, 6, 6, 6, 6, 6, 6 ]
+        },
+        {
+          "PocetHodin": 5,
+          "Ucebne": [ 5, 1, 2, 2, 6 ]
         }
       ]
     }
