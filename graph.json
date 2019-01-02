@@ -1,6 +1,7 @@
 {
-  "NumberOfNodes": 8,
-  "NumberOfEdges": 9,
+  "PocetVrcholov": 8,
+  "PocetHran": 9,
+  "CislaVrcholov": [ 1, 2, 3, 4, 5, 6, 7, 8 ],
   "Edges": [
     {
       "from": 1,
@@ -47,5 +48,7 @@
       "to": 8,
       "cost": 4
     }
-  ]
+  ],
+  "PocetKmenovychUcebni": 4,
+  "KmenoveUcebne": [ 3, 4, 7, 8 ]
 }

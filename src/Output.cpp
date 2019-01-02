@@ -8,18 +8,18 @@
 
 using namespace std;
 
-void Output::print(vector<vector<int>> dist){
-    for (int i = 1; i < dist.size(); ++i)
-        for (int j = 1; j < dist.size(); ++j) {
-            if (dist[i][j] == inf)
-                cout << '-';
-            else cout << dist[i][j];
-            cout << " \n"[j == dist.size()-1];
+void Output::print(map<string, map<string,int>> &dist){
+    for (auto i = dist.begin(); i != dist.end(); ++i) {
+        for (auto j = dist[i->first].begin(); j != dist[i->first].end(); ++j)
+            if(j->second == inf)
+                cout << "-  ";
+            else cout << j->second << "  ";
+        cout << endl;
         }
     cout << endl;
 }
 
-void Output::print(vector<Schedule> schedules){
+void Output::print(vector<Schedule> &schedules){
     for(Schedule i : schedules){
         cout << i.class_name << endl;
             for (int j = 0; j < i.schedule.size(); ++j)
@@ -29,10 +29,10 @@ void Output::print(vector<Schedule> schedules){
     cout << endl;
 }
 
-void Output::print(map<string,int> permutation, int best_dist){
+void Output::print(map<string,string> &permutation, int best_dist){
     for (auto i : permutation) {
         cout << "kmenova trieda pre triedu " << i.first << ": ";
-        if(i.second < 0)
+        if(i.second == "")
             cout << "bez kmenovej triedy";
         else cout << i.second;
         cout << endl;

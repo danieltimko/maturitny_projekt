@@ -1,44 +1,50 @@
 #include <iostream>
 #include <fstream>
-#include <vector>
 #include "../include/Schedule.h"
 #include "../include/Classroom.h"
 #include "../include/Input.h"
-
 
 #define inf 0x3f3f3f3f
 
 using namespace std;
 
-
-bool contains(vector<Classroom> v, int key){
-    for (int i = 0; i < v.size(); ++i)
-        if(v[i].number == key)
-            return true;
-    return false;
-}
-
-void Input::read_graph(vector<vector<int>> &dist){
+void Input::read_graph(map<string, map<string,int>> &dist, vector<Classroom> &kmenove){
     ifstream file;
     file.open("../graph.json");
     int nodes, edges;
     string ignore;
     file >> ignore >> ignore >> nodes >> ignore >> ignore >> edges >> ignore >> ignore >> ignore;
-    dist.resize(nodes+1);
-    for (int i = 0; i < nodes+1; ++i)
-        dist[i].resize(nodes+1, inf);
-    for (int i = 1; i < nodes+1; ++i)
-        dist[i][i] = 0;
+    vector<string> names(nodes);
+    for (int i = 0; i < nodes; ++i) {
+        file >> names[i];
+        if(i < nodes-1)
+            names[i].pop_back();
+    }
+    for (int i = 0; i < nodes; ++i)
+        for (int j = 0; j < nodes; ++j)
+            dist[names[i]][names[j]] = i==j? 0 : inf;
+    file >> ignore >> ignore >> ignore;
     for (int i = 0; i < edges; ++i) {
-        int from, to, cost;
-        file >> ignore >> ignore >> from >> ignore >> ignore >> to >> ignore >> ignore >> cost >> ignore;
+        string from, to;
+        int cost;
+        file >> ignore >> ignore >> from >> ignore >> to >> ignore >> cost >> ignore;
+        from.pop_back();
+        to.pop_back();
         dist[from][to] = cost;
         dist[to][from] = cost;
+    }
+    int n; //pocet kmenovych ucebni
+    file >> ignore >> ignore >> n >> ignore >> ignore >> ignore;
+    kmenove.resize(n);
+    for (int i = 0; i < n; ++i) {
+        file >> kmenove[i].number;
+        if(i < n-1)
+            kmenove[i].number.pop_back();
     }
     file.close();
 }
 
-void Input::read_schedules(vector<Schedule> &schedules, vector<Classroom> &kmenove){
+void Input::read_schedules(vector<Schedule> &schedules){
     ifstream file;
     file.open("../schedules.json");
     int n; //pocet tried
@@ -53,23 +59,15 @@ void Input::read_schedules(vector<Schedule> &schedules, vector<Classroom> &kmeno
             int periods; //pocet hodin v dany den
             file >> ignore >> ignore >> periods >> ignore >> ignore >> ignore;
             for (int k = 0; k < periods; ++k) {
-                int classroom; // ucebna v ktorej je hodina
+                string classroom; // ucebna v ktorej je hodina
                 file >> classroom;
-                schedules[i].schedule.push_back(classroom);
                 if(k < periods-1)
-                    file >> ignore;
+                    classroom.pop_back();
+                schedules[i].schedule.push_back(classroom);
             }
             file >> ignore >> ignore;
         }
         file >> ignore >> ignore;
-    }
-    int m; //pocet kmenovych ucebni
-    file >> ignore >> ignore >> m >> ignore >> ignore >> ignore;
-    kmenove.resize(m);
-    for (int i = 0; i < m; ++i) {
-        file >> kmenove[i].number;
-        if(i < m-1)
-            file >> ignore;
     }
     file.close();
 }
