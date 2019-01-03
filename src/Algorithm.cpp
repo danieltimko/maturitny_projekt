@@ -81,14 +81,12 @@ void all_permutations(int index = 0){
 
 int main() {
     Input::read_graph(dist, kmenove);
-    Output::print(dist);
+    //Output::print(dist);
     Input::read_schedules(schedules);
-    Output::print(schedules);
+    //Output::print(schedules);
     make_floyd();
-    Output::print(dist);
-    cout << one_class("4.SA") << endl;
-    cout << one_class("3.F") << endl;
-    cout << one_class("4.B") << endl;
+    //Output::print(dist);
+    //cout << one_class("4.SA") << endl;
     all_permutations();
     Output::print(best_permutation, best_dist);
 }

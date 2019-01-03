@@ -1,78 +1,28 @@
 {
-  "PocetTried": 3,
+  "PocetTried": 1,
   "Triedy": [
     {
       "NazovTriedy": "4.SA",
       "Days": [
         {
-          "PocetHodin": 9,
-          "Ucebne": [ 1, 2, 5, 2, 2, 2, 2, 2, 6 ]
-        },
-        {
-          "PocetHodin": 7,
-          "Ucebne": [ 1, 5, 5, 2, 5, 2, 2 ]
-        },
-        {
-          "PocetHodin": 6,
-          "Ucebne": [ 2, 1, 5, 6, 2, 2 ]
-        },
-        {
-          "PocetHodin": 7,
-          "Ucebne": [ 2, 2, 1, 2, 2, 2, 1 ]
-        },
-        {
-          "PocetHodin": 5,
-          "Ucebne": [ 5, 6, 5, 2, 2 ]
-        }
-      ]
-    },
-    {
-      "NazovTriedy": "3.F",
-      "Days": [
-        {
-          "PocetHodin": 5,
-          "Ucebne": [ 5, 6, 5, 1, 2 ]
-        },
-        {
-          "PocetHodin": 7,
-          "Ucebne": [ 2, 6, 2, 2, 2, 2, 1 ]
-        },
-        {
-          "PocetHodin": 9,
-          "Ucebne": [ 1, 2, 5, 6, 2, 2, 2, 5, 6 ]
-        },
-        {
-          "PocetHodin": 7,
-          "Ucebne": [ 2, 1, 5, 6, 2, 2, 6 ]
-        },
-        {
-          "PocetHodin": 6,
-          "Ucebne": [ 5, 5, 1, 2, 6, 5 ]
-        }
-      ]
-    },
-    {
-      "NazovTriedy": "4.B",
-      "Days": [
-        {
-          "PocetHodin": 7,
-          "Ucebne": [ 5, 5, 6, 2, 5, 5, 6 ]
-        },
-        {
           "PocetHodin": 8,
-          "Ucebne": [ 2, 2, 1, 1, 2, 2, 2, 2 ]
-        },
-        {
-          "PocetHodin": 6,
-          "Ucebne": [ 1, 1, 1, 2, 2, 2 ]
+          "Ucebne": [ "210", "210", "025", "403", "403", "122/1", "122/1", "122/1" ]
         },
         {
           "PocetHodin": 7,
-          "Ucebne": [ 6, 6, 6, 6, 6, 6, 6 ]
+          "Ucebne": [ "209", "115", "115", "202", "216", "218", "216" ]
+        },
+        {
+          "PocetHodin": 6,
+          "Ucebne": [ "304", "216", "216", "202", "025", "219" ]
         },
         {
           "PocetHodin": 5,
-          "Ucebne": [ 5, 1, 2, 2, 6 ]
+          "Ucebne": [ "220", "220", "208", "601", "302" ]
+        },
+        {
+          "PocetHodin": 5,
+          "Ucebne": [ "122/2", "122/2", "122/2", "210", "202" ]
         }
       ]
     }
