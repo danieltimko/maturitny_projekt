@@ -15,7 +15,7 @@ void Output::print(map<string, map<string,int>> &dist){
                 cout << "-  ";
             else cout << j->second << "  ";
         cout << endl;
-        }
+    }
     cout << endl;
 }
 
@@ -32,7 +32,7 @@ void Output::print(vector<Schedule> &schedules){
 void Output::print(map<string,string> &permutation, int best_dist){
     for (auto i : permutation) {
         cout << "kmenova trieda pre triedu " << i.first << ": ";
-        if(i.second == "")
+        if(i.second.empty())
             cout << "bez kmenovej triedy";
         else cout << i.second;
         cout << endl;

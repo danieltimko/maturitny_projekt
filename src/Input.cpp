@@ -17,8 +17,7 @@ void Input::read_graph(map<string, map<string,int>> &dist, vector<Classroom> &km
     vector<string> names(nodes);
     for (int i = 0; i < nodes; ++i) {
         file >> names[i];
-        if(i < nodes-1)
-            names[i].pop_back();
+        names[i] = names[i].substr(1, names[i].size()-((i<nodes-1)?3:2));
     }
     for (int i = 0; i < nodes; ++i)
         for (int j = 0; j < nodes; ++j)
@@ -28,8 +27,10 @@ void Input::read_graph(map<string, map<string,int>> &dist, vector<Classroom> &km
         string from, to;
         int cost;
         file >> ignore >> ignore >> from >> ignore >> to >> ignore >> cost >> ignore;
-        from.pop_back();
-        to.pop_back();
+        from = from.substr(1, from.size()-3);
+        to = to.substr(1, to.size()-3);
+        /*from.pop_back();
+        to.pop_back();*/
         dist[from][to] = cost;
         dist[to][from] = cost;
     }
@@ -37,9 +38,13 @@ void Input::read_graph(map<string, map<string,int>> &dist, vector<Classroom> &km
     file >> ignore >> ignore >> n >> ignore >> ignore >> ignore;
     kmenove.resize(n);
     for (int i = 0; i < n; ++i) {
-        file >> kmenove[i].number;
-        if(i < n-1)
-            kmenove[i].number.pop_back();
+        string classroom;
+        file >> classroom;
+        classroom = classroom.substr(1, classroom.size()-((i<n-1)?3:2));
+        /*if(i < n-1)
+            classroom.pop_back();*/
+        kmenove[i].number = classroom;
+
     }
     file.close();
 }
@@ -61,8 +66,7 @@ void Input::read_schedules(vector<Schedule> &schedules){
             for (int k = 0; k < periods; ++k) {
                 string classroom; // ucebna v ktorej je hodina
                 file >> classroom;
-                if(k < periods-1)
-                    classroom.pop_back();
+                classroom = classroom.substr(1, classroom.size()-((k<periods-1)?3:2));
                 schedules[i].schedule.push_back(classroom);
             }
             file >> ignore >> ignore;
