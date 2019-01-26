@@ -37,7 +37,7 @@ void make_sums_table(){
         }
 }
 
-string one_class(string &class_name){
+string one_class(string class_name){
     // riesenie pre jednu triedu
     pair<int,string> min_cost = {inf, ""}; //{cost, classroom}
     int index; // index danej triedy vo vektore schedules
@@ -47,6 +47,8 @@ string one_class(string &class_name){
             break;
         }
     for (int i = 0; i < kmenove.size(); ++i) {
+        if(kmenove[i].assigned)
+            continue;
         int cost = 0;
         for (int j = 0; j < schedules[index].schedule.size(); ++j)
             cost += dist[kmenove[i].number][schedules[index].schedule[j]];
@@ -63,18 +65,18 @@ void add_null_classrooms(){
         kmenove.push_back(Classroom());
 }
 
-int evaluate(){
+int evaluate(map<string,string> &perm){
     // vypocita celkovu prejdenu vzdialenost pre dane rozlozenie
     int cost = 0;
     for (int i = 0; i < schedules.size(); ++i)
-        if(!permutation[schedules[i].class_name].empty()) // ak triede este nie je priradena ucebna
-            cost += table[schedules[i].class_name][permutation[schedules[i].class_name]];
+        if(!perm[schedules[i].class_name].empty()) // ak triede este nie je priradena ucebna
+            cost += table[schedules[i].class_name][perm[schedules[i].class_name]];
     return cost;
 }
 
 void all_permutations(int index = 0){
     // prechadza vsetky mozne priradenia ucebni
-    int current_dist = evaluate();
+    int current_dist = evaluate(permutation);
     if(index == schedules.size()){ // kompletna permutacia, vsetky triedy su pridelene
         if(current_dist < best_dist){
             best_dist = current_dist;
@@ -95,6 +97,20 @@ void all_permutations(int index = 0){
         }
 }
 
+void first_permutation(){
+    // heuristicke riesenie
+    // kazdej triede da ucebnu ktora je pre nu najlepsia, ak je ta uz obsadena tak druhu najlepsiu atd.
+    for (int i = 0; i < schedules.size(); ++i) {
+        best_permutation[schedules[i].class_name] = one_class(schedules[i].class_name);
+        for (Classroom &c : kmenove)
+            if(c.number == best_permutation[schedules[i].class_name])
+                c.assigned = true;
+    }
+    best_dist = evaluate(best_permutation);
+    for (Classroom &c : kmenove)
+        c.assigned = false;
+}
+
 int main() {
     Input::read_graph(dist, kmenove);
     //Output::print(dist);
@@ -104,10 +120,11 @@ int main() {
     make_sums_table();
     //Output::print(dist);
     //Output::print(table);
-    //cout << one_class("1.F") << endl;
+    first_permutation(); // heuristicke riesenie
+    Output::print(best_permutation, best_dist); // heuristicke riesenie
     add_null_classrooms();
     all_permutations();
     Output::print(best_permutation, best_dist);
     // TODO kmenove ucebne len pre 1. a 2. rocnik, 3. a 4. rocnik ignore
-    //TODO poriesit ked sa v rozvrhu deli hodina na 2 skupiny
+    // TODO poriesit ked sa v rozvrhu deli hodina na 2 skupiny
 }
