@@ -12,14 +12,15 @@
 
 using namespace std;
 
-map<string, map<string, int>> dist;
-vector<Schedule> schedules;
-vector<Classroom> kmenove;
-map<string, map<string, int>> table; // tabulka predpocitanych vzdialenosti, [trieda][ucebna]
+map<string, map<string, int>> dist; // Floyd-Warshall matrix
+vector<Schedule> schedules; // schedules of all classes
+vector<Classroom> root_classrooms; // vector of root classrooms
+map<string, map<string, int>> table; // table of precomputed distances, [class][classroom]
 map<string,string> permutation, best_permutation; // {class, classroom}
 int best_dist = inf;
 
 void make_floyd(){
+    // Floyd-Warshall algorithm
     for (auto k = dist.begin(); k != dist.end(); ++k)
         for (auto i = dist.begin(); i != dist.end(); ++i)
             for (auto j = dist[i->first].begin(); j != dist[i->first].end(); ++j)
@@ -28,56 +29,55 @@ void make_floyd(){
 }
 
 void make_sums_table(){
-    // predpocita sucty vzdialenosti pre kazdu triedu
+    // precomputes distance sum for every pair class-classroom
+    // if class X was assigned to classroom Y, they would walk a distance of: table[X][Y]
     for (int i = 0; i < schedules.size(); ++i)
-        for (int j = 0; j < kmenove.size(); ++j) {
-            table[schedules[i].class_name][kmenove[j].number] = 0;
+        for (int j = 0; j < root_classrooms.size(); ++j) {
+            table[schedules[i].class_name][root_classrooms[j].number] = 0;
             for (int k = 0; k < schedules[i].schedule.size(); ++k)
-                table[schedules[i].class_name][kmenove[j].number] += dist[schedules[i].schedule[k]][kmenove[j].number];
+                table[schedules[i].class_name][root_classrooms[j].number] += dist[schedules[i].schedule[k]][root_classrooms[j].number];
         }
 }
 
 string one_class(string class_name){
-    // riesenie pre jednu triedu
+    // solution for one specific class
     pair<int,string> min_cost = {inf, ""}; //{cost, classroom}
-    int index; // index danej triedy vo vektore schedules
+    int index;
     for (int i = 0; i < schedules.size(); ++i)
-        if(schedules[i].class_name == class_name){
+        if(schedules[i].class_name == class_name)
             index = i;
-            break;
-        }
-    for (int i = 0; i < kmenove.size(); ++i) {
-        if(kmenove[i].assigned)
+    for (int i = 0; i < root_classrooms.size(); ++i) {
+        if(root_classrooms[i].assigned)
             continue;
         int cost = 0;
         for (int j = 0; j < schedules[index].schedule.size(); ++j)
-            cost += dist[kmenove[i].number][schedules[index].schedule[j]];
+            cost += dist[root_classrooms[i].number][schedules[index].schedule[j]];
         if(cost < min_cost.first)
-            min_cost = {cost, kmenove[i].number};
+            min_cost = {cost, root_classrooms[i].number};
     }
     return min_cost.second;
 }
 
 void add_null_classrooms(){
-    // ak je viac tried ako kmenovych ucebni, doplni ucebne o null_classrooms
-    // ak je triede pridelena null_classroom, znamena to ze sa jej neusla kmenova ucebna
-    while(schedules.size() > kmenove.size())
-        kmenove.push_back(Classroom());
+    // add null classrooms, so that count of classes = count of classrooms
+    while(schedules.size() > root_classrooms.size())
+        root_classrooms.push_back(Classroom());
 }
 
 int evaluate(map<string,string> &perm){
-    // vypocita celkovu prejdenu vzdialenost pre dane rozlozenie
+    // computes total travelled distance for given permutation
     int cost = 0;
     for (int i = 0; i < schedules.size(); ++i)
-        if(!perm[schedules[i].class_name].empty()) // ak triede este nie je priradena ucebna
+        if(!perm[schedules[i].class_name].empty())
             cost += table[schedules[i].class_name][perm[schedules[i].class_name]];
     return cost;
 }
 
 void all_permutations(int index = 0){
-    // prechadza vsetky mozne priradenia ucebni
+    // iterates through all possible permutations
     int current_dist = evaluate(permutation);
-    if(index == schedules.size()){ // kompletna permutacia, vsetky triedy su pridelene
+    if(index == schedules.size()){
+        // complete permutation - all classes have a classroom assigned
         if(current_dist < best_dist){
             best_dist = current_dist;
             best_permutation = permutation;
@@ -87,44 +87,37 @@ void all_permutations(int index = 0){
     if(current_dist >= best_dist)
         return;
     string class_name = schedules[index].class_name;
-    for (int i = 0; i < kmenove.size(); ++i)
-        if(!kmenove[i].assigned) {
-            permutation[class_name] = kmenove[i].number;
-            kmenove[i].assigned = true;
+    for (int i = 0; i < root_classrooms.size(); ++i)
+        if(!root_classrooms[i].assigned) {
+            permutation[class_name] = root_classrooms[i].number;
+            root_classrooms[i].assigned = true;
             all_permutations(index+1);
             permutation[class_name].clear();
-            kmenove[i].assigned = false;
+            root_classrooms[i].assigned = false;
         }
 }
 
-void first_permutation(){
-    // heuristicke riesenie
-    // kazdej triede da ucebnu ktora je pre nu najlepsia, ak je ta uz obsadena tak druhu najlepsiu atd.
+void heuristic_permutation(){
+    // every class gets the classroom with the best distance (if that one is already taken, then second best and so on)
     for (int i = 0; i < schedules.size(); ++i) {
         best_permutation[schedules[i].class_name] = one_class(schedules[i].class_name);
-        for (Classroom &c : kmenove)
+        for (Classroom &c : root_classrooms)
             if(c.number == best_permutation[schedules[i].class_name])
                 c.assigned = true;
     }
     best_dist = evaluate(best_permutation);
-    for (Classroom &c : kmenove)
+    for (Classroom &c : root_classrooms)
         c.assigned = false;
 }
 
 int main() {
-    Input::read_graph(dist, kmenove);
-    //Output::print(dist);
+    Input::read_graph(dist, root_classrooms);
     Input::read_schedules(schedules);
-    //Output::print(schedules);
     make_floyd();
     make_sums_table();
-    //Output::print(dist);
-    //Output::print(table);
-    first_permutation(); // heuristicke riesenie
-    Output::print(best_permutation, best_dist); // heuristicke riesenie
+    heuristic_permutation();
+    Output::print(best_permutation, best_dist);
     add_null_classrooms();
     all_permutations();
     Output::print(best_permutation, best_dist);
-    // TODO kmenove ucebne len pre 1. a 2. rocnik, 3. a 4. rocnik ignore
-    // TODO poriesit ked sa v rozvrhu deli hodina na 2 skupiny
 }

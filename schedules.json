@@ -1,278 +1,278 @@
 {
-  "PocetTried": 6,
-  "Triedy": [
+  "numberOfClasses": 5,
+  "classes": [
     {
-      "NazovTriedy": "1.A",
-      "Days": [
+      "className": "1.A",
+      "days": [
         {
-          "PocetHodin": 3,
-          "Ucebne": [ "004", "004", "004" ]
+          "numberOfLessons": 3,
+          "classrooms": [ "004", "004", "004" ]
         },
         {
-          "PocetHodin": 3,
-          "Ucebne": [ "603", "212", "212" ]
+          "numberOfLessons": 3,
+          "classrooms": [ "603", "212", "212" ]
         },
         {
-          "PocetHodin": 5,
-          "Ucebne": [ "113", "113", "304", "402", "402" ]
+          "numberOfLessons": 5,
+          "classrooms": [ "113", "113", "304", "402", "402" ]
         },
         {
-          "PocetHodin": 6,
-          "Ucebne": [ "511", "511", "302", "203", "203", "117" ]
+          "numberOfLessons": 6,
+          "classrooms": [ "511", "511", "302", "203", "203", "117" ]
         },
         {
-          "PocetHodin": 2,
-          "Ucebne": [ "025", "603" ]
+          "numberOfLessons": 2,
+          "classrooms": [ "025", "603" ]
         }
       ]
     },
     {
-      "NazovTriedy": "1.B",
+      "ClassName": "1.B",
       "Days": [
         {
-          "PocetHodin": 3,
-          "Ucebne": [ "402", "402", "210" ]
+          "numberOfLessons": 3,
+          "classrooms": [ "402", "402", "210" ]
         },
         {
-          "PocetHodin": 6,
-          "Ucebne": [ "210", "210", "117", "004", "004", "004" ]
+          "numberOfLessons": 6,
+          "classrooms": [ "210", "210", "117", "004", "004", "004" ]
         },
         {
-          "PocetHodin": 2,
-          "Ucebne": [ "302", "117" ]
+          "numberOfLessons": 2,
+          "classrooms": [ "302", "117" ]
         },
         {
-          "PocetHodin": 5,
-          "Ucebne": [ "113", "025", "113", "117", "304" ]
+          "numberOfLessons": 5,
+          "classrooms": [ "113", "025", "113", "117", "304" ]
         },
         {
-          "PocetHodin": 5,
-          "Ucebne": [ "509", "509", "203", "203", "117" ]
+          "numberOfLessons": 5,
+          "classrooms": [ "509", "509", "203", "203", "117" ]
         }
       ]
     },
     {
-      "NazovTriedy": "1.C",
+      "ClassName": "1.C",
       "Days": [
         {
-          "PocetHodin": 5,
-          "Ucebne": [ "302", "212", "113", "203", "203" ]
+          "numberOfLessons": 5,
+          "classrooms": [ "302", "212", "113", "203", "203" ]
         },
         {
-          "PocetHodin": 5,
-          "Ucebne": [ "113", "603", "115", "210", "216" ]
+          "numberOfLessons": 5,
+          "classrooms": [ "113", "603", "115", "210", "216" ]
         },
         {
-          "PocetHodin": 2,
-          "Ucebne": [ "212", "601" ]
+          "numberOfLessons": 2,
+          "classrooms": [ "212", "601" ]
         },
         {
-          "PocetHodin": 7,
-          "Ucebne": [ "122/2", "122/2", "402", "402", "304", "113", "601" ]
+          "numberOfLessons": 7,
+          "classrooms": [ "122/2", "122/2", "402", "402", "304", "113", "601" ]
         },
         {
-          "PocetHodin": 4,
-          "Ucebne": [ "004", "004", "004", "113" ]
+          "numberOfLessons": 4,
+          "classrooms": [ "004", "004", "004", "113" ]
         }
       ]
     },
     {
-      "NazovTriedy": "1.SA",
+      "ClassName": "1.SA",
       "Days": [
         {
-          "PocetHodin": 7,
-          "Ucebne": [ "113", "216", "216", "216", "210", "006", "006" ]
+          "numberOfLessons": 7,
+          "classrooms": [ "113", "216", "216", "216", "210", "006", "006" ]
         },
         {
-          "PocetHodin": 6,
-          "Ucebne": [ "302", "122/1", "122/1", "216", "025", "203" ]
+          "numberOfLessons": 6,
+          "classrooms": [ "302", "122/1", "122/1", "216", "025", "203" ]
         },
         {
-          "PocetHodin": 3,
-          "Ucebne": [ "304", "113", "025" ]
+          "numberOfLessons": 3,
+          "classrooms": [ "304", "113", "025" ]
         },
         {
-          "PocetHodin": 7,
-          "Ucebne": [ "403", "403", "025", "122/2", "122/2", "122/2", "113" ]
+          "numberOfLessons": 7,
+          "classrooms": [ "403", "403", "025", "122/2", "122/2", "122/2", "113" ]
         },
         {
-          "PocetHodin": 1,
-          "Ucebne": [ "216" ]
+          "numberOfLessons": 1,
+          "classrooms": [ "216" ]
         }
       ]
     },
     {
-      "NazovTriedy": "1.SB",
+      "ClassName": "1.SB",
       "Days": [
         {
-          "PocetHodin": 5,
-          "Ucebne": [ "216", "216", "216", "113", "117" ]
+          "numberOfLessons": 5,
+          "classrooms": [ "216", "216", "216", "113", "117" ]
         },
         {
-          "PocetHodin": 6,
-          "Ucebne": [ "302", "113", "216", "006", "006", "203" ]
+          "numberOfLessons": 6,
+          "classrooms": [ "302", "113", "216", "006", "006", "203" ]
         },
         {
-          "PocetHodin": 7,
-          "Ucebne": [ "601", "122/1", "122/1", "023", "023", "023", "113" ]
+          "numberOfLessons": 7,
+          "classrooms": [ "601", "122/1", "122/1", "023", "023", "023", "113" ]
         },
         {
-          "PocetHodin": 2,
-          "Ucebne": [ "023", "023" ]
+          "numberOfLessons": 2,
+          "classrooms": [ "023", "023" ]
         },
         {
-          "PocetHodin": 4,
-          "Ucebne": [ "203", "117", "216", "304" ]
+          "numberOfLessons": 4,
+          "classrooms": [ "203", "117", "216", "304" ]
         }
       ]
     },
     {
-      "NazovTriedy": "1.F",
+      "ClassName": "1.F",
       "Days": [
         {
-          "PocetHodin": 7,
-          "Ucebne": [ "602", "602", "602", "602", "304", "509", "509" ]
+          "numberOfLessons": 7,
+          "classrooms": [ "602", "602", "602", "602", "304", "509", "509" ]
         },
         {
-          "PocetHodin": 7,
-          "Ucebne": [ "122/2", "602", "602", "113", "608", "602", "602" ]
+          "numberOfLessons": 7,
+          "classrooms": [ "122/2", "602", "602", "113", "608", "602", "602" ]
         },
         {
-          "PocetHodin": 6,
-          "Ucebne": [ "302", "602", "602", "509", "603", "602" ]
+          "numberOfLessons": 6,
+          "classrooms": [ "302", "602", "602", "509", "603", "602" ]
         },
         {
-          "PocetHodin": 7,
-          "Ucebne": [ "210", "601", "113", "203", "216", "216", "602" ]
+          "numberOfLessons": 7,
+          "classrooms": [ "210", "601", "113", "203", "216", "216", "602" ]
         },
         {
-          "PocetHodin": 7 ,
-          "Ucebne": [ "210", "602", "602", "602", "509", "602", "602" ]
+          "numberOfLessons": 7 ,
+          "classrooms": [ "210", "602", "602", "602", "509", "602", "602" ]
         }
       ]
     },
     {
-      "NazovTriedy": "2.A",
+      "ClassName": "2.A",
       "Days": [
         {
-          "PocetHodin": 4,
-          "Ucebne": [ "511", "601", "302", "220" ]
+          "numberOfLessons": 4,
+          "classrooms": [ "511", "601", "302", "220" ]
         },
         {
-          "PocetHodin": 3,
-          "Ucebne": [ "014", "014", "603" ]
+          "numberOfLessons": 3,
+          "classrooms": [ "014", "014", "603" ]
         },
         {
-          "PocetHodin": 6,
-          "Ucebne": [ "004", "004", "004", "115", "510", "510" ]
+          "numberOfLessons": 6,
+          "classrooms": [ "004", "004", "004", "115", "510", "510" ]
         },
         {
-          "PocetHodin": 5,
-          "Ucebne": [ "603", "115", "115", "122/2", "122/2" ]
+          "numberOfLessons": 5,
+          "classrooms": [ "603", "115", "115", "122/2", "122/2" ]
         },
         {
-          "PocetHodin": 3,
-          "Ucebne": [ "210", "124/2", "304" ]
+          "numberOfLessons": 3,
+          "classrooms": [ "210", "124/2", "304" ]
         }
       ]
     },
     {
-      "NazovTriedy": "2.B",
+      "ClassName": "2.B",
       "Days": [
         {
-          "PocetHodin": 4,
-          "Ucebne": [ "601", "115", "511", "511" ]
+          "numberOfLessons": 4,
+          "classrooms": [ "601", "115", "511", "511" ]
         },
         {
-          "PocetHodin": 6,
-          "Ucebne": [ "510", "510", "117", "124/2", "023", "302" ]
+          "numberOfLessons": 6,
+          "classrooms": [ "510", "510", "117", "124/2", "023", "302" ]
         },
         {
-          "PocetHodin": 4,
-          "Ucebne": [ "115", "115", "212", "117"  ]
+          "numberOfLessons": 4,
+          "classrooms": [ "115", "115", "212", "117"  ]
         },
         {
-          "PocetHodin": 4,
-          "Ucebne": [ "004", "004", "004", "304" ]
+          "numberOfLessons": 4,
+          "classrooms": [ "004", "004", "004", "304" ]
         },
         {
-          "PocetHodin": 4,
-          "Ucebne": [ "113", "014", "014", "115" ]
+          "numberOfLessons": 4,
+          "classrooms": [ "113", "014", "014", "115" ]
         }
       ]
     },
     {
-      "NazovTriedy": "2.C",
+      "ClassName": "2.C",
       "Days": [
         {
-          "PocetHodin": 3,
-          "Ucebne": [ "510", "510", "025" ]
+          "numberOfLessons": 3,
+          "classrooms": [ "510", "510", "025" ]
         },
         {
-          "PocetHodin": 5,
-          "Ucebne": [ "004", "004", "004", "304", "113" ]
+          "numberOfLessons": 5,
+          "classrooms": [ "004", "004", "004", "304", "113" ]
         },
         {
-          "PocetHodin": 4,
-          "Ucebne": [ "508", "508", "601", "511" ]
+          "numberOfLessons": 4,
+          "classrooms": [ "508", "508", "601", "511" ]
         },
         {
-          "PocetHodin": 4,
-          "Ucebne": [ "014", "014", "115", "302" ]
+          "numberOfLessons": 4,
+          "classrooms": [ "014", "014", "115", "302" ]
         },
         {
-          "PocetHodin": 5,
-          "Ucebne": [ "117", "113", "115", "115", "124/2" ]
+          "numberOfLessons": 5,
+          "classrooms": [ "117", "113", "115", "115", "124/2" ]
         }
       ]
     },
     {
-      "NazovTriedy": "4.SA",
+      "ClassName": "4.SA",
       "Days": [
         {
-          "PocetHodin": 8,
-          "Ucebne": [ "210", "210", "025", "403", "403", "122/1", "122/1", "122/1" ]
+          "numberOfLessons": 8,
+          "classrooms": [ "210", "210", "025", "403", "403", "122/1", "122/1", "122/1" ]
         },
         {
-          "PocetHodin": 4,
-          "Ucebne": [ "115", "115", "216", "216" ]
+          "numberOfLessons": 4,
+          "classrooms": [ "115", "115", "216", "216" ]
         },
         {
-          "PocetHodin": 4,
-          "Ucebne": [ "304", "216", "216", "025" ]
+          "numberOfLessons": 4,
+          "classrooms": [ "304", "216", "216", "025" ]
         },
         {
-          "PocetHodin": 2,
-          "Ucebne": [ "601", "302" ]
+          "numberOfLessons": 2,
+          "classrooms": [ "601", "302" ]
         },
         {
-          "PocetHodin": 4,
-          "Ucebne": [ "122/2", "122/2", "122/2", "210" ]
+          "numberOfLessons": 4,
+          "classrooms": [ "122/2", "122/2", "122/2", "210" ]
         }
       ]
     },
     {
-      "NazovTriedy": "4.SB",
+      "ClassName": "4.SB",
       "Days": [
         {
-          "PocetHodin": 4,
-          "Ucebne": [ "603", "210", "210", "304" ]
+          "numberOfLessons": 4,
+          "classrooms": [ "603", "210", "210", "304" ]
         },
         {
-          "PocetHodin": 5,
-          "Ucebne": [ "210", "212", "210", "210", "216" ]
+          "numberOfLessons": 5,
+          "classrooms": [ "210", "212", "210", "210", "216" ]
         },
         {
-          "PocetHodin": 4,
-          "Ucebne": [ "216", "210", "210", "302" ]
+          "numberOfLessons": 4,
+          "classrooms": [ "216", "210", "210", "302" ]
         },
         {
-          "PocetHodin": 7,
-          "Ucebne": [ "122/1", "122/1", "122/1", "216", "025", "403", "403" ]
+          "numberOfLessons": 7,
+          "classrooms": [ "122/1", "122/1", "122/1", "216", "025", "403", "403" ]
         },
         {
-          "PocetHodin": 5,
-          "Ucebne": [ "216", "216", "122/1", "122/1", "122/1" ]
+          "numberOfLessons": 5,
+          "classrooms": [ "216", "216", "122/1", "122/1", "122/1" ]
         }
       ]
     }
