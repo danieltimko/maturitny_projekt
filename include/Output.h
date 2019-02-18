@@ -7,5 +7,5 @@ class Output{
 public:
     static void print(map<string, map<string,int>>&);
     static void print(vector<Schedule>&);
-    static void print(map<string,string>&, int);
+    static void print(map<string, map<string, int>>&, int, vector<int>&);
 };

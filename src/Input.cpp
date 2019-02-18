@@ -1,14 +1,13 @@
 #include <iostream>
 #include <fstream>
 #include "../include/Schedule.h"
-#include "../include/Classroom.h"
 #include "../include/Input.h"
 
 #define inf 0x3f3f3f3f
 
 using namespace std;
 
-void Input::read_graph(map<string, map<string,int>> &dist, vector<Classroom> &root_classrooms){
+void Input::read_graph(map<string, map<string,int>> &dist, vector<string> &root_classrooms){
     ifstream file;
     file.open("../graph.json");
     int nodes, edges; // numberOfNodes, numberOfEdges
@@ -39,7 +38,7 @@ void Input::read_graph(map<string, map<string,int>> &dist, vector<Classroom> &ro
         string classroom;
         file >> classroom;
         classroom = classroom.substr(1, classroom.size()-((i<n-1)?3:2));
-        root_classrooms[i].number = classroom;
+        root_classrooms[i] = classroom;
     }
     file.close();
 }

@@ -29,13 +29,19 @@ void Output::print(vector<Schedule> &schedules){
     cout << endl;
 }
 
-void Output::print(map<string,string> &permutation, int best_dist){
-    for (auto i : permutation) {
-        cout << "kmenova trieda pre triedu " << i.first << ": ";
-        if(i.second.empty())
-            cout << "bez kmenovej triedy";
-        else cout << i.second;
-        cout << endl;
+void Output::print(map<string, map<string, int>> &table, int dist, vector<int> &indexes){
+    for (int i = 0; i < table.size(); ++i) {
+        auto temp1 = table.begin();
+        advance(temp1, indexes[i]);
+        if(indexes[i] == -1)
+            continue;
+        string class_name = temp1->first;
+        auto temp2 = table.begin()->second.begin();
+        advance(temp2, i);
+        string classroom = temp2->first;
+        if(classroom.substr(0, 4) == "null")
+            classroom = "bez kmenovej ucebne";
+        cout << "Kmenova ucebna pre " << class_name << ": " << classroom << endl;
     }
-    cout << "Celkova prejdena vzdialenost: " << best_dist << endl << endl;
+    cout << "Celkova prejdena vzdialenost: " << dist << endl << endl;
 }

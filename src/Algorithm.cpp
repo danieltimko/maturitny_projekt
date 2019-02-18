@@ -1,9 +1,7 @@
 #include <iostream>
 #include <vector>
-#include <map>
-#include <queue>
+#include <unordered_map>
 #include "../include/Schedule.h"
-#include "../include/Classroom.h"
 #include "../include/Input.h"
 #include "../include/Output.h"
 
@@ -14,10 +12,8 @@ using namespace std;
 
 map<string, map<string, int>> dist; // Floyd-Warshall matrix
 vector<Schedule> schedules; // schedules of all classes
-vector<Classroom> root_classrooms; // vector of root classrooms
-map<string, map<string, int>> table; // table of precomputed distances, [class][classroom]
-map<string,string> permutation, best_permutation; // {class, classroom}
-int best_dist = inf;
+vector<string> root_classrooms; // vector of root classrooms
+map<string, map<string, int>> sum; // table of precomputed distances, [class][classroom]
 
 void make_floyd(){
     // Floyd-Warshall algorithm
@@ -30,94 +26,70 @@ void make_floyd(){
 
 void make_sums_table(){
     // precomputes distance sum for every pair class-classroom
-    // if class X was assigned to classroom Y, they would walk a distance of: table[X][Y]
+    // if class X was assigned to classroom Y, they would walk a total distance of: sum[X][Y]
     for (int i = 0; i < schedules.size(); ++i)
         for (int j = 0; j < root_classrooms.size(); ++j) {
-            table[schedules[i].class_name][root_classrooms[j].number] = 0;
+            sum[schedules[i].class_name][root_classrooms[j]] = 0;
             for (int k = 0; k < schedules[i].schedule.size(); ++k)
-                table[schedules[i].class_name][root_classrooms[j].number] += dist[schedules[i].schedule[k]][root_classrooms[j].number];
+                sum[schedules[i].class_name][root_classrooms[j]] += dist[schedules[i].schedule[k]][root_classrooms[j]];
         }
 }
 
-string one_class(string class_name){
-    // solution for one specific class
-    pair<int,string> min_cost = {inf, ""}; //{cost, classroom}
-    int index;
-    for (int i = 0; i < schedules.size(); ++i)
-        if(schedules[i].class_name == class_name)
-            index = i;
-    for (int i = 0; i < root_classrooms.size(); ++i) {
-        if(root_classrooms[i].assigned)
-            continue;
-        int cost = 0;
-        for (int j = 0; j < schedules[index].schedule.size(); ++j)
-            cost += dist[root_classrooms[i].number][schedules[index].schedule[j]];
-        if(cost < min_cost.first)
-            min_cost = {cost, root_classrooms[i].number};
-    }
-    return min_cost.second;
+void add_null_classrooms() {
+    // adds null classrooms, so that count of classes = count of classrooms
+    while (schedules.size() > root_classrooms.size())
+        root_classrooms.push_back("null" + to_string(schedules.size()-root_classrooms.size()));
 }
 
-void add_null_classrooms(){
-    // add null classrooms, so that count of classes = count of classrooms
-    while(schedules.size() > root_classrooms.size())
-        root_classrooms.push_back(Classroom());
-}
-
-int evaluate(map<string,string> &perm){
-    // computes total travelled distance for given permutation
-    int cost = 0;
-    for (int i = 0; i < schedules.size(); ++i)
-        if(!perm[schedules[i].class_name].empty())
-            cost += table[schedules[i].class_name][perm[schedules[i].class_name]];
-    return cost;
-}
-
-void all_permutations(int index = 0){
-    // iterates through all possible permutations
-    int current_dist = evaluate(permutation);
-    if(index == schedules.size()){
-        // complete permutation - all classes have a classroom assigned
-        if(current_dist < best_dist){
-            best_dist = current_dist;
-            best_permutation = permutation;
+void best_solution(){
+    // finds best assignment of classrooms for minimal distance travelled
+    int r = schedules.size(), s = root_classrooms.size();
+    struct Permutation{
+        int cost;
+        vector<int> indexes;
+    };
+    vector<unordered_map<string, Permutation>> tab(r+1);
+    string perm;
+    for (int i = 0; i < s; ++i) perm += '0';
+    tab[0][perm].cost = 0;
+    tab[0][perm].indexes.resize(s, -1);
+    for (int i = 0; i < r; ++i) {
+        auto temp = sum.begin();
+        advance(temp, i);
+        string class_name = temp->first;
+        for (int j = 0; j < tab[i].size(); ++j) {
+            auto it = tab[i].begin();
+            advance(it, j);
+            string perm = it->first;
+            for (int k = 0; k < s; ++k) {
+                auto temp = sum[class_name].begin();
+                advance(temp, k);
+                string classroom = temp->first;
+                if (perm[k] == '0') {
+                    perm[k] = '1';
+                    it->second.indexes[k] = i;
+                    if (tab[i+1].find(perm) == tab[i+1].end() or it->second.cost + sum[class_name][classroom] < tab[i+1][perm].cost)
+                        tab[i+1][perm] = {it->second.cost + sum[class_name][classroom], it->second.indexes};
+                    perm[k] = '0';
+                    it->second.indexes[k] = -1;
+                }
+            }
         }
-        return;
     }
-    if(current_dist >= best_dist)
-        return;
-    string class_name = schedules[index].class_name;
-    for (int i = 0; i < root_classrooms.size(); ++i)
-        if(!root_classrooms[i].assigned) {
-            permutation[class_name] = root_classrooms[i].number;
-            root_classrooms[i].assigned = true;
-            all_permutations(index+1);
-            permutation[class_name].clear();
-            root_classrooms[i].assigned = false;
-        }
-}
-
-void heuristic_permutation(){
-    // every class gets the classroom with the best distance (if that one is already taken, then second best and so on)
-    for (int i = 0; i < schedules.size(); ++i) {
-        best_permutation[schedules[i].class_name] = one_class(schedules[i].class_name);
-        for (Classroom &c : root_classrooms)
-            if(c.number == best_permutation[schedules[i].class_name])
-                c.assigned = true;
-    }
-    best_dist = evaluate(best_permutation);
-    for (Classroom &c : root_classrooms)
-        c.assigned = false;
+    Permutation min = {-1, {}};
+    for (auto it = tab[r].begin(); it != tab[r].end(); ++it)
+        if (min.cost == -1 or it->second.cost < min.cost)
+            min = it->second;
+    Output::print(sum, min.cost, min.indexes);
 }
 
 int main() {
     Input::read_graph(dist, root_classrooms);
     Input::read_schedules(schedules);
+    //Output::print(dist);
+    //Output::print(schedules);
     make_floyd();
-    make_sums_table();
-    heuristic_permutation();
-    Output::print(best_permutation, best_dist);
     add_null_classrooms();
-    all_permutations();
-    Output::print(best_permutation, best_dist);
+    make_sums_table();
+    best_solution();
 }
