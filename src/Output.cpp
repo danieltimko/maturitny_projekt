@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include <fstream>
 #include "../include/Schedule.h"
 #include "../include/Output.h"
 
@@ -30,7 +31,9 @@ void Output::print(vector<Schedule> &schedules){
 }
 
 void Output::print(map<string, map<string, int>> &table, int dist, vector<int> &indexes){
-    for (int i = 0; i < table.size(); ++i) {
+    ofstream out;
+    out.open("../output.txt");
+    for (int i = 0; i < table.size(); ++i){
         auto temp1 = table.begin();
         advance(temp1, indexes[i]);
         if(indexes[i] == -1)
@@ -41,7 +44,8 @@ void Output::print(map<string, map<string, int>> &table, int dist, vector<int> &
         string classroom = temp2->first;
         if(classroom.substr(0, 4) == "null")
             classroom = "bez kmenovej ucebne";
-        cout << "Kmenova ucebna pre " << class_name << ": " << classroom << endl;
+        out << "Kmenova ucebna pre " << class_name << ": " << classroom << endl;
     }
-    cout << "Celkova prejdena vzdialenost: " << dist << endl << endl;
+    out << "Celkova prejdena vzdialenost: " << dist << endl << endl;
+    out.close();
 }
