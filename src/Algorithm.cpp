@@ -12,7 +12,7 @@ using namespace std;
 
 map<string, map<string, int>> dist; // Floyd-Warshall matrix
 vector<Schedule> schedules; // schedules of all classes
-vector<string> root_classrooms; // vector of root classrooms
+vector<string> classrooms; // vector of all home classrooms
 map<string, map<string, int>> sum; // table of precomputed distances, [class][classroom]
 
 void make_floyd(){
@@ -28,22 +28,22 @@ void make_sums_table(){
     // precomputes distance sum for every pair class-classroom
     // if class X was assigned to classroom Y, they would walk a total distance of: sum[X][Y]
     for (int i = 0; i < schedules.size(); ++i)
-        for (int j = 0; j < root_classrooms.size(); ++j) {
-            sum[schedules[i].class_name][root_classrooms[j]] = 0;
+        for (int j = 0; j < classrooms.size(); ++j) {
+            sum[schedules[i].class_name][classrooms[j]] = 0;
             for (int k = 0; k < schedules[i].schedule.size(); ++k)
-                sum[schedules[i].class_name][root_classrooms[j]] += dist[schedules[i].schedule[k]][root_classrooms[j]];
+                sum[schedules[i].class_name][classrooms[j]] += dist[schedules[i].schedule[k]][classrooms[j]];
         }
 }
 
 void add_null_classrooms(){
     // adds null classrooms, so that count of classes = count of classrooms
-    while (schedules.size() > root_classrooms.size())
-        root_classrooms.push_back("null" + to_string(schedules.size()-root_classrooms.size()));
+    while (schedules.size() > classrooms.size())
+        classrooms.push_back("null" + to_string(schedules.size()-classrooms.size()));
 }
 
 void best_solution(){
     // finds best assignment of classrooms for minimal distance travelled
-    int r = schedules.size(), s = root_classrooms.size();
+    int r = schedules.size(), s = classrooms.size();
     struct Permutation{
         int cost;
         vector<int> indexes;
@@ -84,7 +84,7 @@ void best_solution(){
 }
 
 int main() {
-    Input::read_graph(dist, root_classrooms);
+    Input::read_graph(dist, classrooms);
     Input::read_schedules(schedules);
     //Output::print(dist);
     //Output::print(schedules);
