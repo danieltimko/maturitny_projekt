@@ -35,7 +35,7 @@ void make_sums_table(){
         }
 }
 
-void add_null_classrooms() {
+void add_null_classrooms(){
     // adds null classrooms, so that count of classes = count of classrooms
     while (schedules.size() > root_classrooms.size())
         root_classrooms.push_back("null" + to_string(schedules.size()-root_classrooms.size()));
