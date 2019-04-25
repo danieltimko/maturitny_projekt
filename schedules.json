@@ -1,5 +1,5 @@
 {
-  "numberOfClasses": 11,
+  "numberOfClasses": 14,
   "classes": [
     {
       "className": "1.A",
@@ -226,49 +226,125 @@
         }
       ]
     },
+
     {
-      "ClassName": "4.SA",
+      "ClassName": "2.SA",
       "Days": [
         {
-          "numberOfLessons": 8,
-          "classrooms": [ "210", "210", "025", "403", "403", "122/1", "122/1", "122/1" ]
+          "numberOfLessons": 5,
+          "classrooms": [ "511", "511", "216", "403", "403" ]
+        },
+        {
+          "numberOfLessons": 5,
+          "classrooms": [ "508", "025", "014", "014", "302" ]
+        },
+        {
+          "numberOfLessons": 6,
+          "classrooms": [ "025", "122/2", "122/2", "122/1", "122/1", "122/1" ]
+        },
+        {
+          "numberOfLessons": 6,
+          "classrooms": [ "216", "113", "216", "117", "304", "025" ]
         },
         {
           "numberOfLessons": 4,
-          "classrooms": [ "115", "115", "216", "216" ]
-        },
-        {
-          "numberOfLessons": 4,
-          "classrooms": [ "304", "216", "216", "025" ]
-        },
-        {
-          "numberOfLessons": 2,
-          "classrooms": [ "601", "302" ]
-        },
-        {
-          "numberOfLessons": 4,
-          "classrooms": [ "122/2", "122/2", "122/2", "210" ]
+          "classrooms": [ "006", "006", "006", "216" ]
         }
       ]
     },
     {
-      "ClassName": "4.SB",
+      "ClassName": "2.SB",
       "Days": [
         {
-          "numberOfLessons": 4,
-          "classrooms": [ "603", "210", "210", "304" ]
+          "numberOfLessons": 5,
+          "classrooms": [ "023", "023", "023", "216", "113" ]
         },
         {
           "numberOfLessons": 5,
-          "classrooms": [ "210", "212", "210", "210", "216" ]
+          "classrooms": [ "122/1", "122/1", "603", "511", "511" ]
         },
         {
           "numberOfLessons": 4,
-          "classrooms": [ "216", "210", "210", "302" ]
+          "classrooms": [ "603", "302", "403", "403" ]
+        },
+        {
+          "numberOfLessons": 6,
+          "classrooms": [ "216", "210", "216", "603", "402", "402" ]
+        },
+        {
+          "numberOfLessons": 5,
+          "classrooms": [ "014", "014", "023", "304", "216" ]
+        }
+      ]
+    },
+    {
+      "ClassName": "2.F",
+      "Days": [
+        {
+          "numberOfLessons": 3,
+          "classrooms": [ "509", "302", "508" ]
         },
         {
           "numberOfLessons": 7,
-          "classrooms": [ "122/1", "122/1", "122/1", "216", "025", "403", "403" ]
+          "classrooms": [ "023", "023", "014", "004", "004", "004", "025" ]
+        },
+        {
+          "numberOfLessons": 2,
+          "classrooms": [ "025", "210" ]
+        },
+        {
+          "numberOfLessons": 6,
+          "classrooms": [ "510", "510", "509", "304", "508", "508" ]
+        },
+        {
+          "numberOfLessons": 3,
+          "classrooms": [ "025", "113", "113" ]
+        }
+      ]
+    },
+    {
+      "ClassName": "3.SA",
+      "Days": [
+        {
+          "numberOfLessons": 5,
+          "classrooms": [ "304", "113", "113", "025", "210" ]
+        },
+        {
+          "numberOfLessons": 5,
+          "classrooms": [ "403", "403", "122/2", "122/2", "122/2" ]
+        },
+        {
+          "numberOfLessons": 5,
+          "classrooms": [ "113", "302", "299", "299", "299" ]
+        },
+        {
+          "numberOfLessons": 6,
+          "classrooms": [ "025", "122/2", "122/2", "212", "210", "210" ]
+        },
+        {
+          "numberOfLessons": 5,
+          "classrooms": [ "601", "511", "511", "511", "216" ]
+        }
+      ]
+    },
+    {
+      "ClassName": "3.F",
+      "Days": [
+        {
+          "numberOfLessons": 5,
+          "classrooms": [ "216", "509", "509", "509", "304" ]
+        },
+        {
+          "numberOfLessons": 5,
+          "classrooms": [ "113", "210", "115", "508", "508" ]
+        },
+        {
+          "numberOfLessons": 4,
+          "classrooms": [ "509", "014", "509", "603" ]
+        },
+        {
+          "numberOfLessons": 3,
+          "classrooms": [ "601", "302", "509" ]
         },
         {
           "numberOfLessons": 5,

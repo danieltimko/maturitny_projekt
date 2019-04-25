@@ -46,6 +46,6 @@ void Output::print(map<string, map<string, int>> &table, int dist, vector<int> &
             classroom = "bez kmenovej ucebne";
         out << "Kmenova ucebna pre " << class_name << ": " << classroom << endl;
     }
-    out << "Celkova prejdena vzdialenost: " << dist << endl << endl;
+    out << "Celkova prejdena vzdialenost: " << dist << endl;
     out.close();
 }
