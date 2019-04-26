@@ -1,7 +1,7 @@
 {
   "numberOfNodes": 59,
   "numberOfEdges": 60,
-  "nodeLabels": [ "vestibul", "budova2", "schodisko0.0", "schodisko0.1", "schodisko1.0", "schodisko1.1", "schodisko2.0", "schodisko2.1", "schodisko3.1", "schodisko4.1", "002", "003", "004", "008", "006", "007", "012", "013", "025", "014", "023", "015", "016", "112", "113", "115", "117", "124/1", "124/2", "122/1", "122/2", "203", "202", "205", "201", "208", "209", "299", "220", "210", "219", "212", "218", "216", "302", "304", "402", "403", "501", "502", "503", "601", "602", "603", "608", "508", "509", "510", "511" ],
+  "nodeLabels": [ "vestibul", "budova2", "schodisko0.a", "schodisko0.b", "schodisko1.a", "schodisko1.b", "schodisko2.a", "schodisko2.b", "schodisko3.b", "schodisko4.b", "002", "003", "004", "008", "006", "007", "012", "013", "025", "014", "023", "015", "016", "112", "113", "115", "117", "124/1", "124/2", "122/1", "122/2", "203", "202", "205", "201", "208", "209", "299", "220", "210", "219", "212", "218", "216", "302", "304", "402", "403", "501", "502", "503", "601", "602", "603", "608", "508", "509", "510", "511" ],
   "edges": [
     {
       "from": "vestibul",
@@ -15,7 +15,7 @@
     },
     {
       "from": "vestibul",
-      "to": "schodisko0.0",
+      "to": "schodisko0.a",
       "cost": 1
     },
     {
@@ -24,8 +24,8 @@
       "cost": 27
     },
     {
-      "from": "schodisko0.0",
-      "to": "schodisko1.0",
+      "from": "schodisko0.a",
+      "to": "schodisko1.a",
       "cost": 12
     },
     {
@@ -85,26 +85,26 @@
     },
     {
       "from": "016",
-      "to": "schodisko0.1",
+      "to": "schodisko0.b",
       "cost": 5
     },
     {
-      "from": "schodisko0.1",
-      "to": "schodisko1.1",
+      "from": "schodisko0.b",
+      "to": "schodisko1.b",
       "cost": 13
     },
     {
-      "from": "schodisko1.1",
-      "to": "schodisko2.1",
+      "from": "schodisko1.b",
+      "to": "schodisko2.b",
       "cost": 13
     },
     {
-      "from": "schodisko1.1",
+      "from": "schodisko1.b",
       "to": "122/1",
       "cost": 5
     },
     {
-      "from": "schodisko1.1",
+      "from": "schodisko1.b",
       "to": "117",
       "cost": 5
     },
@@ -140,16 +140,16 @@
     },
     {
       "from": "112",
-      "to": "schodisko1.0",
+      "to": "schodisko1.a",
       "cost": 6
     },
     {
-      "from": "schodisko1.0",
-      "to": "schodisko2.0",
+      "from": "schodisko1.a",
+      "to": "schodisko2.a",
       "cost": 12
     },
     {
-      "from": "schodisko2.0",
+      "from": "schodisko2.a",
       "to": "201",
       "cost": 5
     },
@@ -169,7 +169,7 @@
       "cost": 2
     },
     {
-      "from": "schodisko2.0",
+      "from": "schodisko2.a",
       "to": "208",
       "cost": 6
     },
@@ -210,41 +210,41 @@
     },
     {
       "from": "218",
-      "to": "schodisko2.1",
+      "to": "schodisko2.b",
       "cost": 4
     },
     {
-      "from": "schodisko2.1",
+      "from": "schodisko2.b",
       "to": "216",
       "cost": 5
     },
     {
-      "from": "schodisko2.1",
-      "to": "schodisko3.1",
+      "from": "schodisko2.b",
+      "to": "schodisko3.b",
       "cost": 13
     },
     {
-      "from": "schodisko3.1",
+      "from": "schodisko3.b",
       "to": "304",
       "cost": 2
     },
     {
-      "from": "schodisko3.1",
+      "from": "schodisko3.b",
       "to": "302",
       "cost": 2
     },
     {
-      "from": "schodisko3.1",
-      "to": "schodisko4.1",
+      "from": "schodisko3.b",
+      "to": "schodisko4.b",
       "cost": 11
     },
     {
-      "from": "schodisko4.1",
+      "from": "schodisko4.b",
       "to": "403",
       "cost": 2
     },
     {
-      "from": "schodisko4.1",
+      "from": "schodisko4.b",
       "to": "402",
       "cost": 1
     },
