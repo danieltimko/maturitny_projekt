@@ -1,7 +1,7 @@
 # maturitny_projekt
 <b>By: Daniel Timko</b>
 
-This program is an implementation of algorithm solving following problem:
+This program is an implementation of an algorithm solving following problem:
 
 <i>Find such an assignment of root classrooms to classes in school, so that all students walk altogether as little as possible. Root classroom is the classroom, where students of that class return for breaks.</i>
 
